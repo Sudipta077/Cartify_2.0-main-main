@@ -1,0 +1,29 @@
+/*Navbar*/
+.navbar{
+    background-color: var(--darkblue);
+    height: 100px;
+    width: 100%;
+}
+.navbar-brand {
+    color: var(--skin);
+    font-family: 'Poppins', sans-serif;   
+}
+
+.search {
+    margin-top: -16px;
+    width: 30vw;
+    height: 80px;
+    background-color: #001524;
+}
+.btn{
+    margin-top: -2px !important;
+    background-color: #3b984b !important;
+    color:#001524
+}
+.dropdown-menu{
+    background-color: #3b984b;
+    border-radius: 12px;
+}
+*:hover{
+    transition: .3s ease;
+}

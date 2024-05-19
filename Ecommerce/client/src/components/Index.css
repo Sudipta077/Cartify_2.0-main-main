@@ -1,0 +1,104 @@
+/*signup*/
+.body{
+    margin: 0px;
+    padding: 0px;
+}
+.signin{
+    width: 1200px;
+    display: flex;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border: none;
+    border-radius: 25%;
+}
+@media screen and (max-width: 600px) {
+    .signin{
+        flex-direction: column;
+    }
+}
+.put{
+    height: 650px;
+    width: 600px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: #eee;
+}
+.pic{
+    width: 600px;
+    height: 650px;
+    background-color: none;
+    background-image:url('piccart.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.main{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 10%;
+}
+form{
+    height: 550px;
+    width: 80%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #FF9E3D ;
+}
+input{
+    background-color: white;
+    padding: 5px;
+}
+.box{
+   margin-top: 40px;
+   width: 90%;
+}
+label{
+    float: left;
+    margin-left: 30px;
+    margin-bottom: 4px;
+}
+.fill{
+    width: 90%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    margin-left: 22.5px;
+}
+.container{
+    margin-top: 15px;
+    margin-left: auto;
+    justify-content: center;
+    text-align: center;
+}
+.putt{
+    height: 40px;
+    width: 80px;
+    cursor: pointer;
+    margin-top: 50px;
+    font-size: medium;
+    font: bold;
+    text-decoration: none;
+    background: transparent;
+    border-radius: 5px;
+    border: none;
+    background-color: #001524;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: 0.5s ease;
+    margin-bottom: 20PX;
+}
+.putt:hover{
+    color: #001524;
+    background-color: white;
+    font: bold;
+}

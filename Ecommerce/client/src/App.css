@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Poppins:wght@300&display=swap');
+/*font-family: 'Dela Gothic One', cursive;
+font-family: 'Poppins', sans-serif;*/
+:root{
+    --darkblue:#001524; 
+    --green:#3b984b; 
+    --master:#D6CC99; 
+    --skin:#FDE5D4; 
+}
+.darkblue{
+    color: var(--darkblue);
+}
+.skin{
+    color: var(--skin);
+}
+
+body{
+    scroll-behavior: smooth;
+}
+
+/*Home*/
+.card img{
+    background-color: #3b984b;
+    height: 10vh;
+    width: 10vh;
+    margin: auto;
+}
+.card{
+    border-radius: 300px;
+    border: 0px;
+    cursor: pointer;
+}
+.extra1 .card{
+    border-color: rgb(238, 197, 197);
+    border: 1px solid rgb(232, 231, 231) !important; 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; 
+    
+}
+
+.electronics h1:hover{
+    color: #3b984b;
+    cursor: pointer;
+}
+.clothing h1:hover{
+    color: #3b984b;
+    cursor: pointer;
+    
+}
+
+@media only screen and (max-width: 600px){
+
+    .card img{
+        height: 6vh;
+        width: 6vh;
+    }
+    .card{
+        width: 7vh;
+    }
+    .card-body p{
+        width: max-content;
+                
+    }
+    .card-text{
+        font-size: 8px;
+    }
+
+}
+
+.ads .carousel-item img {
+    width: max-content;
+    height: 35vh;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.ads .carousel-item{
+    background:url('../src/images/bannerback.png');
+    background-size: contain;
+}
+.ads{
+    padding: 0;
+}
+.extra1 .card{
+    border: 1px solid black;
+    border-radius: 0px;
+    height: 40vh;
+    width: 40vh;
+}
+.extra1 .card img{
+    width: 100%;
+    height: 30vh;
+}
+
+.footer{
+    background-color: var(--darkblue);
+    height: 40vh;
+    color: #ece4bf;
+}
+.footer .about-foot ul li{
+    width: max-content;
+}
+
+/*login*/

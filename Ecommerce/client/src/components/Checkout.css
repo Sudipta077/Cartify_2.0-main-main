@@ -1,0 +1,129 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.main{
+    display: flex;
+}
+.container1{
+    width: 60%;
+}
+.navbar{
+    display: flex;
+}
+.title{
+    width: 50%;
+    text-align: left;
+}
+.tag{
+    width: 50%;
+    display: flex;
+    text-align: right;
+    justify-content: right;
+    padding: 1rem;
+    align-items: center;
+}
+.press{
+    background-color: white;
+    color: black;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.details{
+    padding: 1rem;
+}
+#fill{
+    padding: 0.5rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+}
+#fill::placeholder{
+    color: black;
+    font-size: 14px;
+}
+form{
+    margin-top: 2rem;
+}
+.one{
+    margin-top: 2rem;
+}
+.two{
+    margin-top: 2rem;
+}
+.one #fill{
+    width: 50%;
+}
+.two #fill{
+    width: 97.5%;
+}
+.but{
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+
+.container2{
+    width: 40%;
+    padding: 1rem 2rem;
+}
+.navbar2{
+    justify-content: center;
+    text-align: center;
+}
+.schema{
+    margin-top: 3rem;
+}
+.card{
+    width: 60%;
+    margin: auto;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+}
+.card-box{
+    width: 100%;
+    padding: 0.8rem;
+}
+.total{
+    width: 100%;
+    display: flex;
+    margin-top: 0.5rem;
+}
+.name{
+    width: 50%;
+    text-align: left;
+}
+.price{
+    width: 50%;
+    text-align: right;
+}
+.til{
+    margin-bottom: 0.5rem;
+}
+.prod img{
+    height: 10rem;
+    width: 10rem;
+}
+@media (max-width: 600px){
+    .main{
+        display: grid;
+    }
+    .container1{
+        width: 90%;
+        margin: auto;
+    }
+    .container2{
+        width: 70%;
+        margin: auto;
+    }
+    .card{
+        width: 100%;
+    }
+}
