@@ -13,11 +13,32 @@ const Navbar=()=>{
     navigate('/list',{ state:{id : search}});
   }
   const onSignUp=()=>{
+    if(localStorage.getItem('jwtecomm')){
+      window.alert("You need to log out first !");
+   }else{
     navigate('/users/sign_up');
+   }
+    
   }
   const onLogin=()=>{
-    navigate('/users/sign_in');
+    if(localStorage.getItem('jwtecomm')){
+       window.alert("You are already logged in !");
+    }else{
+      navigate('/users/sign_in');
+    }
   }
+
+  const onLogout=()=>{
+    if(localStorage.getItem('jwtecomm')){
+       localStorage.removeItem('jwtecomm');
+       window.alert("You have been logged out successfully.")
+       navigate('/');
+    }else{
+      window.alert("You are not logged in !")
+      navigate('/users/sign_in');
+    }
+  }
+
   const onProfile=()=>{
     navigate('/profile');
   }
@@ -44,12 +65,12 @@ const Navbar=()=>{
               <ul className="dropdown-menu">
               <li onClick={(e)=>{onProfile(e)}} ><a className="dropdown-item" href="#"> <i class="zmdi zmdi-account"></i> My profile</a></li>
                 <li onClick={(e)=>{onSignUp(e)}}><a className="dropdown-item" href="#"><i class="zmdi zmdi-account-add"></i> Sign-up</a> </li>
-                <li  onClick={(e)=>{onLogin(e)}}><a className="dropdown-item" href="#"> <i class="zmdi zmdi-face"></i> Login</a></li>
-                <li><a className="dropdown-item" href="#"><i class="zmdi zmdi-shopping-basket"></i> My orders</a></li>
+                <li  onClick={(e)=>{onLogin(e)}}><a className="dropdown-item" href="#"> <i class="zmdi zmdi-sign-in"></i> Login</a></li>
+                <li onClick={(e)=>{onLogout(e)}} ><a className="dropdown-item" href="#"><i class="zmdi zmdi-close"></i> Logout</a></li>
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link active skin" aria-current="page" href="#"> <i class="zmdi zmdi-shopping-cart"></i> Cart</a>
+            <NavLink className="nav-link skin" to='/checkout'><i class="zmdi zmdi-shopping-cart"></i> Cart</NavLink>
             </li>
           </ul>
           <form className="d-flex search" role="search">

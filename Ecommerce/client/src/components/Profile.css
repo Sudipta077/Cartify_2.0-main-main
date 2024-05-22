@@ -34,8 +34,11 @@
     text-decoration: none;
 }
 .profile-card-body{
-    margin-top: 10rem;
+    margin-top: 5vw;
     padding: 0rem 4.5rem;
+    height: 5vh;
+ 
+    width: 30vw;
 }
 @media(max-width:600px){
     .container{

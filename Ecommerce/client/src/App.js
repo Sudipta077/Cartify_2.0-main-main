@@ -14,9 +14,10 @@ import Profile from './components/Profile.jsx';
 import Payment from './components/Payment.jsx';
 import Checkout from './components/Checkout.jsx';
 import Order from './components/Order.jsx';
+import UserContextProvider from './context/userContextProvider.jsx';
 function App() {
   return (
-    <>
+    <UserContextProvider>
 
     <Routes>
       <Route path='/' element={<Home/>}></Route>
@@ -35,7 +36,7 @@ function App() {
       {/* <Route path='/error' element={<Error/>}/>  */}
       <Route  element={<Error/>}/>  
     </Routes>
-    </>
+    </UserContextProvider>
   );
 }
 

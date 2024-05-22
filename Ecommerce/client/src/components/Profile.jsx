@@ -3,6 +3,12 @@ import axios from 'axios';
 import image from "../images/avatar.svg";
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    NavLink,
+} from "react-router-dom";
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -60,7 +66,7 @@ const Profile = () => {
                     <div className="profile-card1">
                         <img src={image} className="profile-card-img-top" alt="Avatar" height={120} width={120} />
                         <div className="profile-card-body">
-                            <a href="#" className="btn btn-primary">Go to your Cart</a>
+                        
                         </div>
                     </div>
                     {data && (
@@ -68,8 +74,9 @@ const Profile = () => {
                             <p>Name: {data.name}</p>
                             <p>Contact No.: {data.contact}</p>
                             <p>Email: {data.email}</p>
-                            <div className="profile-card-body">
-                                <a href="#" className="btn btn-primary">Continue Shopping</a>
+                            <div className="profile-card-body ">
+                                <NavLink className="nav-link skin btn btn-primary" to='/'>Continue Shopping</NavLink>
+                                <NavLink className="nav-link skin btn btn-primary" to='/'>Go to your cart</NavLink>
                             </div>
                         </div>
                     )}

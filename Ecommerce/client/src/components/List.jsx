@@ -19,6 +19,11 @@ const List = () => {
         let name = e.target.innerText; 
         navigate('/popo',{ state:{id : name}});
     }
+    const onAdd = (e, title) => {
+        e.preventDefault(); // Prevent default action if necessary
+        let name = title;
+        navigate('/checkout', { state: { id: name } });
+      }
 
 
     return (
@@ -56,7 +61,7 @@ const List = () => {
                                         <li>{ele.category}</li>
                                         
                                         <li>{ele.description}</li>                                    
-                                        <button className="button-28 m-2" role="button">Add to cart</button>
+                                        <button className="button-28 m-2" role="button" onClick={(e) => { onAdd(e, ele.title) }} >Add to cart</button>
                                     </div>
                                     <div className="price  . list-unstyled fs-4">
                                     <li><b>Price - ${ele.price}</b></li>
