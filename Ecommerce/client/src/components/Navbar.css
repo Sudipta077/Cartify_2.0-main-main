@@ -8,12 +8,24 @@
     color: var(--skin);
     font-family: 'Poppins', sans-serif;   
 }
+.navbar-brand:hover{
+    color: #3b984b;
+    transition: .2s ;
+}
+.nav-link:hover{
+    color: #3b984b;
+    transition: .2s ;
+}
 
 .search {
     margin-top: -16px;
     width: 30vw;
     height: 80px;
     background-color: #001524;
+}
+.search .navbar-input input{
+    width: 30vw;
+    height: 20px;
 }
 .btn{
     margin-top: -2px !important;
@@ -26,4 +38,5 @@
 }
 *:hover{
     transition: .3s ease;
+    
 }

@@ -1,0 +1,47 @@
+
+
+.checkout-orders{
+    padding: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.bill-container table tr td{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+.orders{
+    width: 20vw;
+    padding: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+.zmdi:hover{
+    cursor: pointer;
+    
+
+}
+.zmdi-delete{
+    margin-left: 3vw;
+}
+
+.orderList{
+    padding: 2vw;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.orderList img{
+    width: 5vw;
+    height: 6vw;
+}
+.button-28{
+    width: 15vw;
+}
+
+@media (max-width: 600px){
+   .checkout-main{
+    display: flex;
+    flex-direction: column;
+    
+   }
+   .orderList img{
+    width: 15vw;
+    height: 16vw;
+}
+}

@@ -2,10 +2,11 @@ import Navbar from '../components/Navbar';
 import pic from '../images/dress1.jpeg';
 import './Popo.css';
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
+import Chatbot from './Chatbot';
 const Popo=()=>{
-    
+    const navigate = useNavigate();
     const [state, setState] = useState([]);
 // -----------------------------------
     const location = useLocation();
@@ -18,10 +19,34 @@ const Popo=()=>{
         setState(response.data)
 
     }, []);
+
+
+    const onAdd = (e, title) => {
+        if(localStorage.getItem('jwtecomm')){
+        
+        e.preventDefault();
+        let newItem = title;
+        const items = localStorage.getItem('cartList');
+        let updatedItems = [];
+    
+        if (items) {
+            updatedItems = JSON.parse(items);
+        }
+    
+        updatedItems.push(newItem);
+        localStorage.setItem('cartList', JSON.stringify(updatedItems));        
+       
+      }
+      else{
+        window.alert('You need to log in !')
+        navigate('/users/sign_in');
+      }
+    }
     
     return(
         <>
             <Navbar/>
+            <Chatbot/>
             {
                  state.filter((fil)=>{
                     
@@ -39,7 +64,7 @@ const Popo=()=>{
                                 <img id='pic' src={ele.image} alt="" />
                                 <div className="butt">
                                     <button className='bttn1'>Buy Now</button>
-                                    <button className='bttn2'>Add to Cart</button>
+                                    <button className='bttn2' onClick={(e) => { onAdd(e, ele.title) }}>Add to Cart</button>
                                 </div>
                             </div>
                             <div className="details">

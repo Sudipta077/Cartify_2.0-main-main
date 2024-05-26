@@ -46,17 +46,17 @@ const Navbar=()=>{
         <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container">
-      <a class="navbar-brand d-flex" href="#">
+      <NavLink className="nav-link navbar-brand skin d-flex" to='/'>
           <img src={logo} width="50" height="50" class="d-inline-block align-text-top"/>
           <h1>CARTIFY</h1>
-        </a>
+          </NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link skin" to='/Home'>Become a seller</NavLink>
+              <NavLink className="nav-link skin" to='/admin'>Become a seller</NavLink>
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle skin" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -70,11 +70,11 @@ const Navbar=()=>{
               </ul>
             </li>
             <li className="nav-item">
-            <NavLink className="nav-link skin" to='/checkout'><i class="zmdi zmdi-shopping-cart"></i> Cart</NavLink>
+            <NavLink className="nav-link skin" to='/checkoutme'><i class="zmdi zmdi-shopping-cart"></i> Cart</NavLink>
             </li>
           </ul>
           <form className="d-flex search" role="search">
-            <input className="form-control me-2" value={search} onChange={onChange} type="search" placeholder="Search products, brands and more" aria-label="Search"/>
+            <input className="form-control navbar-input me-2" value={search} onChange={onChange} type="search" placeholder="Search products, brands and more" aria-label="Search"/>
           
             <button className="btn btn-outline-success" type="submit" onClick={()=>onSearch(search)}>Search</button>
     

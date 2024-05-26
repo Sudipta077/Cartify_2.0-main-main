@@ -96,7 +96,7 @@ const Index = ({ isSignInPage = true }) => {
                 <div className="signin">
                     <div className="pic"></div>
                     <div className="put">
-                        <form method="POST" onSubmit={handleSubmit}>
+                        <form method="POST" onSubmit={handleSubmit} className="index-form" >
                             <h2>{isSignInPage ? 'SignIn' : 'SignUp'}</h2>
                             <div className="box">
                                 {!isSignInPage && <div className="container">

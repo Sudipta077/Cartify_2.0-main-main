@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar';
 import axios from 'axios';
 import "./Electronics.css";
 import React, { useState, useEffect } from "react";
+import Chatbot from './Chatbot';
 const Electronics=()=>{
     const [state, setState] = useState([]);
 
@@ -14,6 +15,7 @@ const Electronics=()=>{
     }, []);
     return(
         <>
+            <Chatbot/>
             <Navbar/>
             {
                 state.filter((fil)=>{

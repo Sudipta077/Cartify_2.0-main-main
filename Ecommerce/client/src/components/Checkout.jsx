@@ -1,9 +1,9 @@
-import React from "react";
+import React,{ useState, useEffect ,useContext} from "react";
 // import './Checkout.css';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import { useState, useEffect } from 'react';
+
 
 const Checkout = () =>{
     const navigate = useNavigate();
@@ -36,7 +36,7 @@ const Checkout = () =>{
                 }).map((ele) => {
                     return(
                         <div className="main">
-                            <div className="container1">
+                            {/* <div className="container1">
                                 <div className="navbar">
                                     <div className="title"><h2>Checkout</h2></div>
                                     <div className="tag">
@@ -69,7 +69,7 @@ const Checkout = () =>{
                                     <button className="but" onClick={() => navigate('/payment')}>Continue</button>
                                 </div>
 
-                            </div>
+                            </div> */}
                             <div className="container2">
                                 <div className="navbar2">
                                     <div className="title2"><h4>Order Summary</h4></div>
@@ -109,3 +109,7 @@ const Checkout = () =>{
     )
 }
 export default Checkout;
+
+
+
+

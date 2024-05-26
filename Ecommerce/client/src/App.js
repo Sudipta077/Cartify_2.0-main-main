@@ -13,8 +13,13 @@ import Error from './components/Error.jsx';
 import Profile from './components/Profile.jsx';
 import Payment from './components/Payment.jsx';
 import Checkout from './components/Checkout.jsx';
+import Checkoutme from './components/Checkoutme.jsx';
 import Order from './components/Order.jsx';
-import UserContextProvider from './context/userContextProvider.jsx';
+import UserContextProvider from '../src/context/UserContextProvider.jsx';
+import Admin from './components/Admin.jsx';
+import Chatbot from './components/Chatbot.jsx';
+import Buynow from './components/Buynow.jsx';
+import Addproduct from './components/Addproduct.jsx';
 function App() {
   return (
     <UserContextProvider>
@@ -31,10 +36,15 @@ function App() {
       <Route path='/popo' element={<Popo/>}/>
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/checkout' element={<Checkout/>}/>
+      <Route path='/checkoutme' element={<Checkoutme/>}/>
       <Route path='/payment' element={<Payment/>}/>
-      <Route path='/order' element={<Order/>}/>  
-      {/* <Route path='/error' element={<Error/>}/>  */}
-      <Route  element={<Error/>}/>  
+      <Route path='/order' element={<Order/>}/> 
+      <Route path='/admin' element={<Admin/>}/>  
+      <Route path='/chatbot' element={<Chatbot/>}/> 
+      <Route path='/buynow' element={<Buynow/>}/>  
+      <Route path='/addproduct' element={<Addproduct/>}/>  
+     
+      <Route path='*' element={<Error />} />
     </Routes>
     </UserContextProvider>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import img from '../images/logo.png';
+// import img from '../images/logo.png';
 import { NavLink } from "react-router-dom";
 import sale from '../images/sale.jpeg';
 import men from '../images/men.png';
@@ -11,7 +11,7 @@ import dress1 from '../images/dress1.jpeg';
 import dress2 from '../images/dress2.jpeg';
 import dress3 from '../images/dress3.jpeg';
 import dress4 from '../images/dress4.jpeg';
-import bannerback from '../images/bannerback.png';
+// import bannerback from '../images/bannerback.png';
 import pendrive from '../images/pendrive.jpeg';
 import powerbank from '../images/powerbank.jpeg';
 import printer from '../images/printer.jpeg';
@@ -23,7 +23,9 @@ import banner2 from '../images/banner2.png';
 import banner3 from '../images/banner3.png';
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import Chatbot from "./Chatbot";
+
+// import { useState } from "react";
 
 
 const Home = () => {
@@ -50,6 +52,8 @@ const Home = () => {
     return (
         <>
             <Navbar/>
+            <Chatbot/>
+
             <div className="card-container justify-content-center flex-wrap mt-2 p-2 d-flex">
 
                 <div className="card m-3 col-lg-1" id="top" onClick={(e)=>{onSearchList(e)}}>

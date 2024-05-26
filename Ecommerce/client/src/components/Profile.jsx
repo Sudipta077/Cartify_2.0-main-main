@@ -9,6 +9,7 @@ import {
     Route,
     NavLink,
 } from "react-router-dom";
+import Chatbot from "./Chatbot";
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -61,6 +62,7 @@ const Profile = () => {
 
     return (
         <>
+        <Chatbot/>
             <div className="profile-main">
                 <div className="container-profile">
                     <div className="profile-card1">

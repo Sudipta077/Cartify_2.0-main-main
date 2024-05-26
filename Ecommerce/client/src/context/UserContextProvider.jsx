@@ -1,7 +1,7 @@
 import React,{useState} from "react";
-import UserContext from "./userContext.js";
-const userContextProvider=({children})=>{
-    const[data,setData] = useState(null);
+import UserContext from "./UserContext";
+const UserContextProvider=({children})=>{
+    const[data,setData] = useState([]);
     return(
         <UserContext.Provider value={{data,setData}}>
             {children}
@@ -9,4 +9,4 @@ const userContextProvider=({children})=>{
 
     )
 }
-export default userContextProvider;
+export default UserContextProvider;

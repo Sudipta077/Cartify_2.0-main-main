@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 const User = require('./model/userSchema'); 
+const Admin = require('./model/adminSchema');
 require('./dbconn');
 const authenticate = require('./middleware/authenticate');
 
@@ -94,5 +95,67 @@ router.post('/profile', authenticate, async (req, res) => {
                     console.log('Error', error.message);
                 }
   }
+});
+
+// Order placement
+
+router.post('/buynow',authenticate,async(req,res)=>{
+    const {name,address,contact,payment,carList} = req.body;
+    
+    try{
+        const verifiedUser = await User.findOne({_id:req.body.userId});
+        if(!verifiedUser){
+            res.status(401).send({error:"Could not find customer !"});
+        }
+        else{
+            console.log(verifiedUser.name);
+            const userId = verifiedUser._id;
+          
+            const enlist = await User.findByIdAndUpdate(userId,
+                {
+                    $push:{
+                        orders:{
+                            order : carList
+                        }
+                    }
+                }
+                ,
+                    {
+                        new:true
+                    }
+            );
+            
+            const orders =enlist.orders;
+            const id = enlist._id;
+            const admin = new Admin({id ,name,address,contact,payment,orders});
+            await admin.save();
+            res.status(200).json({ message: "Customer details added successfully."});
+        
+    
+            
+    
+    }
+
+
+
+    }
+    catch(err){
+        if (err.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            window.alert(err.response.data.message || "Server Error Occurred !");
+            console.log(err.response.data.error || error.response.data);
+        } else if (err.request) {
+            // The request was made but no response was received
+            window.alert("No response received from the server");
+            console.log(err.request);
+        } else {
+            // Something happened in setting up the request that triggered an Error
+           
+            console.log('Error', err.message);
+        }
+    }
+
+
 });
 module.exports = router;
