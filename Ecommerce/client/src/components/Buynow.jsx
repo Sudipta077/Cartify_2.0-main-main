@@ -36,6 +36,7 @@ const Buynow = () => {
             });
             if(response.status===200){
                 window.alert("Order placed");
+                localStorage.removeItem('cartList');
                 navigate('/order');
             }
     }
@@ -81,7 +82,7 @@ const Buynow = () => {
                             <h2 className="Payment-label text-center mt-3" style={{ fontSize: "20px", fontWeight: "bold" }}>Payment Options</h2>
                             <div className="Payment-option d-flex justify-content-evenly">
                                 <div className="googlepay">
-                                    <input type="radio" id="Payment-wo1" value="Gpay" name="payment-option" onChange={handleIntput} onClick={(e) => { onSearch(e) }} className="Payment-wo" />
+                                    <input type="radio" id="Payment-wo1" value="Gpay" name="payment" onChange={handleIntput} onClick={(e) => { onSearch(e) }} className="Payment-wo" />
                                     <label for="Payment-wo1"  style={{ marginRight: "1vw" }}>Google Pay</label>
 
                                     <div className="Payment-wow text-center" >
@@ -89,7 +90,7 @@ const Buynow = () => {
                                     </div>
                                 </div>
                                 <div className="cod">
-                                    <input type="radio"  onChange={handleIntput} value="cod" onClick={(e) => { onSearch(e) }} id="Payment-wo2" name="payment-option" className="Payment-wo" />
+                                    <input type="radio"  onChange={handleIntput} value="cod" onClick={(e) => { onSearch(e) }} id="Payment-wo2" name="payment" className="Payment-wo" />
                                     <label for="Payment-wo2" style={{ marginRight: "1vw" }}>Cash On Delivery</label>
                                 </div>
                             </div>

@@ -20,17 +20,9 @@ const adminSchema = new mongoose.Schema({
     payment:{
         type:String,
         required:true
-    },
-    orders:
-        [
-            {
-                order:{
-                    type:String,
-                    required:true
-                }
-            }
-        ]
+    }
     
 });
+
 const Admin = mongoose.model('ADMIN',adminSchema);
 module.exports = Admin;

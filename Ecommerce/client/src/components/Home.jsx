@@ -11,7 +11,7 @@ import dress1 from '../images/dress1.jpeg';
 import dress2 from '../images/dress2.jpeg';
 import dress3 from '../images/dress3.jpeg';
 import dress4 from '../images/dress4.jpeg';
-// import bannerback from '../images/bannerback.png';
+import machine from '../images/washing machine.jpeg';
 import pendrive from '../images/pendrive.jpeg';
 import powerbank from '../images/powerbank.jpeg';
 import printer from '../images/printer.jpeg';
@@ -53,6 +53,7 @@ const Home = () => {
         <>
             <Navbar/>
             <Chatbot/>
+          
 
             <div className="card-container justify-content-center flex-wrap mt-2 p-2 d-flex">
 
@@ -106,13 +107,14 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="card m-3 col-lg-1">
-                    <img src={sofa} className="card-img-top" alt="..." />
+                    <img src={machine} className="card-img-top" alt="..." />
                     <div className="card-body">
-                    <p className="card-text text-center"> <NavLink to="/error">Furniture </NavLink></p>
+                    <NavLink to="/error" style={{textDecoration: 'none'}}> <p className="card-text text-center">More...</p></NavLink>
                     </div>
                 </div>
                 
             </div>
+    
 
             <div className="ads container-fluid">
                 <div id="carouselExample" className="carousel slide">

@@ -11,6 +11,8 @@
     width: 20%;
     margin: auto;
     margin-top: 0px;
+   
+ 
 }
 .Admin-options{
     margin-top: 1rem;
@@ -41,6 +43,7 @@
 .Admin-Hamburger{
     rotate: 90deg;
     cursor: pointer;
+ 
 }
 .Admin-information{
     width: 100%;
