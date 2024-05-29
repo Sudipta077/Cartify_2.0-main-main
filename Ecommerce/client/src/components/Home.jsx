@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import img from '../images/logo.png';
 import { NavLink } from "react-router-dom";
 import sale from '../images/sale.jpeg';
@@ -24,40 +24,51 @@ import banner3 from '../images/banner3.png';
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import Chatbot from "./Chatbot";
-
+import axios from "axios";
 // import { useState } from "react";
 
 
 const Home = () => {
 
     const navigate = useNavigate();
-   
-    const onSearch =(e)=>{
-        let name = e.target.id;
-         
-         navigate('/list',{ state:{id : name}});
-    }   
+    const [state, setState] = useState([]);
+    useEffect(()=>async () => {
+        const response = await axios.get("https://fakestoreapi.com/products")
+        console.log(response)
+        setState(response.data);
+    })
 
-    const onSearchList =(e)=>{
+    const productShow=(e,title)=>{
+        const name = title;
+        navigate('/popo',{state:{id:name}})
+    }
+
+    const onSearch = (e) => {
         let name = e.target.id;
-           
-        navigate('/list',{ state:{id : name}});
-    }  
-    const onSearchError =(e)=>{
+
+        navigate('/list', { state: { id: name } });
+    }
+
+    const onSearchList = (e) => {
         let name = e.target.id;
-           
-        navigate('/error',{ state:{id : name}});
-    }  
+
+        navigate('/list', { state: { id: name } });
+    }
+    const onSearchError = (e) => {
+        let name = e.target.id;
+
+        navigate('/error', { state: { id: name } });
+    }
 
     return (
         <>
-            <Navbar/>
-            <Chatbot/>
-          
+            <Navbar />
+            <Chatbot />
+
 
             <div className="card-container justify-content-center flex-wrap mt-2 p-2 d-flex">
 
-                <div className="card m-3 col-lg-1" id="top" onClick={(e)=>{onSearchList(e)}}>
+                <div className="card m-3 col-lg-1" id="top" onClick={(e) => { onSearchList(e) }}>
                     <img src={sale} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <p className="card-text text-center" >Top Sales</p>
@@ -66,55 +77,55 @@ const Home = () => {
                 <div className="card m-3 col-lg-1" >
                     <img src={bag} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e)=>{onSearch(e)}}  id = "Backpack">Bags</p>
+                        <p className="card-text text-center" onClick={(e) => { onSearch(e) }} id="Backpack">Bags</p>
                     </div>
                 </div>
                 <div className="card m-3 col-lg-1" >
                     <img src={makeup} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e)=>{onSearch(e)}}  id = "jewelery">Jewellery</p>
+                        <p className="card-text text-center" onClick={(e) => { onSearch(e) }} id="jewelery">Jewellery</p>
                     </div>
                 </div>
                 <div className="card m-3 col-lg-1">
                     <img src={harddisk} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e)=>{onSearch(e)}}  id = "Hard Drive">Hard Disk</p>
+                        <p className="card-text text-center" onClick={(e) => { onSearch(e) }} id="Hard Drive">Hard Disk</p>
                     </div>
                 </div>
                 <div className="card m-3 col-lg-1">
                     <img src={tv} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e)=>{onSearch(e)}}  id = "inches">Television</p>
+                        <p className="card-text text-center" onClick={(e) => { onSearch(e) }} id="inches">Television</p>
                     </div>
                 </div>
 
                 <div className="card m-3 col-lg-1">
                     <img src={men} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e)=>{onSearch(e)}}  id = "Mens">Men</p>
+                        <p className="card-text text-center" onClick={(e) => { onSearch(e) }} id="Mens">Men</p>
                     </div>
                 </div>
                 <div className="card m-3 col-lg-1">
                     <img src={women} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e)=>{onSearch(e)}}  id = "women" >Women</p>
+                        <p className="card-text text-center" onClick={(e) => { onSearch(e) }} id="women" >Women</p>
                     </div>
                 </div>
                 <div className="card m-3 col-lg-1">
                     <img src={sofa} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center"  onClick={(e)=>{onSearchError(e)}} >Furniture</p>
+                        <p className="card-text text-center" onClick={(e) => { onSearchError(e) }} >Furniture</p>
                     </div>
                 </div>
                 <div className="card m-3 col-lg-1">
                     <img src={machine} className="card-img-top" alt="..." />
                     <div className="card-body">
-                    <NavLink to="/error" style={{textDecoration: 'none'}}> <p className="card-text text-center">More...</p></NavLink>
+                        <NavLink to="/error" style={{ textDecoration: 'none' }}> <p className="card-text text-center">More...</p></NavLink>
                     </div>
                 </div>
-                
+
             </div>
-    
+
 
             <div className="ads container-fluid">
                 <div id="carouselExample" className="carousel slide">
@@ -142,69 +153,63 @@ const Home = () => {
             </div>
 
             <div className="container-fluid extra1 electronics my-5">
-                <h1 onClick={(e)=>{onSearch(e)}} id="electronics">Best of electronics</h1>   
+                <h1 onClick={(e) => { onSearch(e) }} id="electronics">Best of electronics</h1>
+
                 <div className="card-container flex-wrap container-fluid d-flex justify-content-between mx-1">
-                    <div className="card col-lg-3 col-sm-4" >
-                        <img src={camera} className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Cameras</h5>    
-                        </div>
-                    </div>
-                    <div className="card col-lg-3 col-sm-4" >
-                        <img src={printer} className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Printers</h5>
-                            
-                        </div>
-                    </div>
-                    <div className="card col-lg-3 col-sm-4" >
-                        <img src={pendrive} className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Pendrives</h5>
-                        
-                        </div>
-                    </div>
-                    <div className="card col-lg-3 col-sm-4" >
-                        <img src={powerbank} className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Powerbanks</h5>
-                        </div>
-                    </div>
+                {
+                    state.filter((fil) => {
+                        if (fil.category.includes("electronics")) {
+                            return (
+                                <></>
+                            )
+                        }
+                    }).slice(1,5).map((ele) => {
+                        return (
+                            <>
+                                    <div className="product-card col-lg-3 col-sm-4" >
+                                        <img src={ele.image} className="card-img-top" alt="..." />
+                                        <div className="card-body text-center">
+                                            <h5 className="card-title"  onClick={(e)=>{productShow(e,ele.title)}}>{ele.title.substring(0,13)}...</h5>
+                                        </div>
+                                    </div>
+                                    
+                            </>
+                        );
+                    })
+                    
+                }
                 </div>
             </div>
 
             <div className="container-fluid clothing extra1 my-3">
-            <h1 onClick={(e)=>onSearch(e)} id="clothing"  >Best of clothing</h1> 
-                <div className="card-container container-fluid d-flex justify-content-between mx-1">
-                    <div className="card col-lg-3 col-sm-4" >
-                        <img src={dress1} className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Winter wear</h5>
-                            
-                        </div>
+                <h1 onClick={(e) => onSearch(e)} id="clothing"  >Best of clothing</h1>
+                <div className="card-container  flex-wrap container-fluid d-flex justify-content-between mx-1">
+                    
+                    {
+                         state.filter((fil)=>{
+                            if(fil.category.includes("clothing")){
+                                return (
+                                    <></>
+                                )
+                            }
+                        }).slice(1,5).map((ele)=>{
+                            return(
+                                <>
+                                    <div className="product-card col-lg-3 col-sm-4" >
+                                        <img src={ele.image} className="card-img-top" alt="..." />
+                                        <div className="card-body text-center">
+                                            <h5 className="card-title">{ele.title.substring(0,13)}...</h5>
+                                        </div>
+                                    </div>    
+                                </>
+                            );
+                        })
+                    }
+                    
+                   
                     </div>
-                    <div className="card col-lg-3 col-sm-4" >
-                        <img src={dress2} className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Crop Tops</h5>
-                            
-                        </div>
-                    </div>
-                    <div className="card col-lg-3 col-sm-4" >
-                        <img src={dress3} className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Women's wear</h5>
-                            
-                        </div>
-                    </div>
-                    <div className="card col-lg-3 col-sm-4" >
-                        <img src={dress4} className="card-img-top" alt="..." />
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Western Styles</h5>
-                            
-                        </div>
-                    </div>
-                </div>
+                   
+                
             </div>
 
             <div className="footer d-flex justify-content-between p-5 container-fluid">
@@ -245,11 +250,11 @@ const Home = () => {
                     <h4>Address</h4>
                     <p>Cartify Internet Private Limited, Buildings Alyssa, Begonia & Clove Embassy Tech Village, Outer Ring Road, Devarabeesanahalli Village, Bengaluru, 560103, Karnataka, India
 
-CIN: U51109KA2012PTC066107
+                        CIN: U51109KA2012PTC066107
 
-Telephone: 044-45614700</p>
+                        Telephone: 044-45614700</p>
                 </div>
-                
+
             </div>
         </>
     );

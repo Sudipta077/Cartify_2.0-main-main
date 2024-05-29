@@ -115,7 +115,17 @@ const Checkoutme = () => {
                             </tr>
                             
                        </table>
-                        <NavLink to='/buynow'><button className="button-28 m-5">Buy Now</button></NavLink>
+                       {totalPrice > 0 ? (
+    <NavLink to='/buynow'><button className="button-28 m-5">Buy Now</button></NavLink>
+) : (
+    <button
+        className="button-28 m-5"
+        onClick={() => window.alert("Add some items to the cart.")}
+        
+    >
+        Buy Now
+    </button>
+)}
                     </div>
                 </div>
             </div>

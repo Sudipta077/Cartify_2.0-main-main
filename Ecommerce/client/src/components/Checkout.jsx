@@ -36,40 +36,7 @@ const Checkout = () =>{
                 }).map((ele) => {
                     return(
                         <div className="main">
-                            {/* <div className="container1">
-                                <div className="navbar">
-                                    <div className="title"><h2>Checkout</h2></div>
-                                    <div className="tag">
-                                        <p>Already have an Account</p>
-                                        <button className="press">Login</button>
-                                    </div>
-                                </div>
-
-                                <div className="details">
-                                    <h3>Shipping Address</h3>
-                                    <form action="">
-                                        <div className="one" style={{display:"flex", gap:"1rem"}}>
-                                            <input id="fill" type="text" placeholder="First Name" required/>
-                                            <input id="fill" type="text" placeholder="Last Name" required/>
-                                        </div>
-                                        <div className="two">
-                                            <input id="fill" type="text" placeholder="Street Address" required/>
-                                        </div>
-                                        <div className="two">
-                                            <input id="fill" type="text" placeholder="Apartment/ House/ Building"/>
-                                        </div>
-                                        <div className="one" style={{display:"flex", gap:"1rem"}}>
-                                            <input id="fill" type="text" placeholder="City" required/>
-                                            <input id="fill" type="number" placeholder="Pin Code" required/>
-                                        </div>
-                                        <div className="one">
-                                            <input id="fill" type="number" placeholder="Mobile No." required/>
-                                        </div>
-                                    </form>
-                                    <button className="but" onClick={() => navigate('/payment')}>Continue</button>
-                                </div>
-
-                            </div> */}
+                          
                             <div className="container2">
                                 <div className="navbar2">
                                     <div className="title2"><h4>Order Summary</h4></div>

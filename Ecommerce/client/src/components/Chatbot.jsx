@@ -9,7 +9,10 @@ const Chatbot = () => {
   const predefinedResponses = {
     "What is the return policy?": "Our return policy allows returns within 30 days of purchase.",
     "How can I track my order?": "You can track your order using the tracking number provided in your confirmation email.",
-    "What payment methods do you accept?": "We accept all UPI payment methods."
+    "What payment methods do you accept?": "We accept all UPI payment methods.",
+    "Do you offer international shipping?": "Yes, we ship to most countries worldwide.",
+    "What should I do if I receive a damaged item?": "Please contact our customer service within 48 hours of receiving the item.",
+    "What are your customer service hours?": "Our customer service is available Monday to Friday, 9 AM to 6 PM."
   };
 
   const handleToggle = () => {
@@ -23,7 +26,7 @@ const Chatbot = () => {
 
       let response = predefinedResponses[input.trim()];
       if (!response) {
-        response = "For further assistance, please contact our customer care at support@example.com or call 123-456-7890.";
+        response = "For further assistance, please contact our customer care at support@cartify.com or call 9051-789-289.";
       }
       setMessages([...newMessages, { sender: "bot", text: response }]);
       setInput("");

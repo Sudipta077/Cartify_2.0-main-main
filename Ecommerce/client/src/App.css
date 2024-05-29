@@ -36,6 +36,17 @@ body{
     width: 10vw; 
   
 }
+.product-card img{
+    height: 36vh;
+    width: 35vh;
+    text-align: center;
+    margin-left: 2vw;
+    padding: 1vw;
+
+}
+.product-card{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; 
+}
 
 .extra1 .card{
     border-color: rgb(238, 197, 197);

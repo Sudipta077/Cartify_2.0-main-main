@@ -80,9 +80,27 @@ const Profile = () => {
                                 <NavLink className="nav-link skin btn btn-primary" to='/'>Continue Shopping</NavLink>
                                 <NavLink className="nav-link skin btn btn-primary" to='/'>Go to your cart</NavLink>
                             </div>
+                           
                         </div>
                     )}
+                    
+                   
                 </div>
+                <h2>Your orders: </h2>
+                    <div className="profile-orders d-flex">
+                    {data && data.orders && data.orders.length > 0 ? (
+                        data.orders.map((item, index) => (
+                            <ul>
+                            <li key={index} className="order-item">
+                                <p>Order: {item.order}</p>
+                               
+                            </li>
+                            </ul>
+                        ))
+                    ) : (
+                        <p>No orders found</p>
+                    )}
+                    </div>
             </div>
         </>
     );

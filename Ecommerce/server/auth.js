@@ -145,17 +145,14 @@ router.post('/buynow', authenticate, async (req, res) => {
 // admin page  
 
 router.get('/admin',async(req,res)=>{
-    
+    const aggregatedData = await fetchData();
     const data = await User.countDocuments();
     const orders = await Admin.countDocuments();
-    const list = await Admin.find({});
     
-    res.json({data,orders,list});
+    
+    res.json({data,orders,list: aggregatedData});
 });
 
-router.get('/getorders',async(req,res)=>{
-    const order = await User.findOne({_id:req.body.id});
-    res.send(order);
-})
+
 
 module.exports = router;

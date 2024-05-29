@@ -12,15 +12,12 @@ import Order from '../images/order.png';
 
 const Admin = () => {
 
-    const [data, setData] = useState([]);
+    
     const [totalCustomers, setTotalCustomers] = useState(0);
     const [totalOrders, setTotalorders] = useState(0);
     const [list, setList] = useState([]);
    
-   const getOrders=async(id)=>{
-        const res = await axios.get('/getorders',id);
-        setData(res.data.order)
-   }
+ 
    
     const showData = async () => {
         try {
@@ -29,7 +26,7 @@ const Admin = () => {
             setTotalCustomers(response.data.data);
             setTotalorders(response.data.orders);
             setList(response.data.list);
-            setData(response.data.orders);
+         
         } catch (err) {
             console.log(err);
         }
@@ -97,16 +94,26 @@ const Admin = () => {
                     <div className="Admin-data">
                     {
     list.map((row, i) => {
-        const orders = getOrders(row.userId);
+        
         return (
-            <div className="Admin-product" key={i}>
-                <h5>{row._id}</h5>
-                <h5>{row.name}</h5>
-                <h5>{row.address}</h5>
-                     { data.map((item, index) => (
-                    <h4 key={index}>{item.order}</h4>
-                ))}
+            <>
+            <div className="Admin-product container-fluid col-lg-12" key={i}>
+                
+                <h5>Order id: {row._id}</h5>
+                <h5>Name: {row.name}</h5>
+                <h5>Address: {row.address}</h5>
+                <div className="orderSHow d-flex  flex-column">
+                {row.mappedData.orders.map((order, k) => (
+                                        <div className="product" key={k}>
+                                            <h6>Order {k+1}: {JSON.stringify(order.order)}</h6>
+                                            <h6>product id: {JSON.stringify(order._id)}</h6>
+                                            
+                                        </div>
+                                    ))}
+                                    </div>
+             <button type="submit" className="Payment-switch" >Shipped</button>
             </div>
+             </>
         );
     })
 }
