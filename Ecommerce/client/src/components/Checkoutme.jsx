@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import axios from "axios";
 import Chatbot from "./Chatbot";
 import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 const Checkoutme = () => {
 
 
@@ -120,7 +121,7 @@ const Checkoutme = () => {
 ) : (
     <button
         className="button-28 m-5"
-        onClick={() => window.alert("Add some items to the cart.")}
+        onClick={() => toast.info("Add some items to the cart.")}
         
     >
         Buy Now

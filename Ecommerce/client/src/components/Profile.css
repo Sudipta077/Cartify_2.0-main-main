@@ -1,45 +1,21 @@
-*{
-    margin: 0px;
-    padding: 0px;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+.profile-card p{
+    font-size: 3vh;
+    font-family: 'Poppins', sans-serif;
+}
+.profile-card h1{
+    font-family: "Dancing Script", cursive;
+}
+h2{
+    font-family: 'Poppins', sans-serif;  
+}
+.order-item:hover {
+    color: #3b984b;
+    transition: 0s;
+    cursor: pointer;
 }
 
-.container-profile{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-}
-.profile-card1{
-    width: 20rem;
-    padding: 2rem 0rem;
-    text-align: center;
-    border: none;
-    background-color: white;
-}
-.profile-card2{
-    width: 20rem;
-    padding: 2rem 0rem;
-    text-align: left;
-    border: none;
-    background-color: darkblue;
-    color: white;
-}
-.profile-card2 p{
-    margin-left: 1rem;
-}
-.profile-card2 a{
-    background-color: green;
-    text-decoration: none;
-}
-.profile-card-body{
-    margin-top: 5vw;
-    padding: 0rem 4.5rem;
-    height: 5vh;
- 
-    width: 30vw;
-}
+
 @media(max-width:600px){
     .container{
         display: grid;

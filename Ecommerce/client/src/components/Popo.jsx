@@ -1,10 +1,11 @@
 import Navbar from '../components/Navbar';
-import pic from '../images/dress1.jpeg';
+import Rating from '@mui/material/Rating';
 import './Popo.css';
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import Chatbot from './Chatbot';
+
 const Popo = () => {
     const navigate = useNavigate();
     const [state, setState] = useState([]);
@@ -23,7 +24,7 @@ const Popo = () => {
 
     const onAdd = (e, title) => {
 
-        if (e.target.className == "bttn1") {
+        if (e.target.className == "Popo-bttn1") {
             navigate('/checkoutme');
             let newItem = title;
             const items = localStorage.getItem('cartList');
@@ -76,12 +77,12 @@ const Popo = () => {
                     }
                 }).map((ele) => {
                     return (
-                        <div className="main">
+                        <div className="main my-3">
                             <div className="image">
                                 <img id='pic' src={ele.image} alt="" />
-                                <div className="butt">
-                                    <button className='bttn1' onClick={(e) => { onAdd(e, ele.title) }}>Buy Now</button>
-                                    <button className='bttn2' onClick={(e) => { onAdd(e, ele.title) }}>Add to Cart</button>
+                                <div className="Popo-butt">
+                                    <button className='Popo-bttn1' onClick={(e) => { onAdd(e, ele.title) }}>Buy Now</button>
+                                    <button className='Popo-bttn2' onClick={(e) => { onAdd(e, ele.title) }}>Add to Cart</button>
                                 </div>
                             </div>
                             <div className="details">
@@ -89,14 +90,9 @@ const Popo = () => {
                                 <li style={{ color: '#666' }}><h4>{ele.category}</h4></li>
                                 <li style={{ color: '#666' }}>{ele.description}</li>
                                 <li style={{ marginTop: '20px', fontSize: '30px' }}><b>Price - ${ele.price}</b></li>
+                                <Rating name="read-only" value={ele.rating.rate} readOnly />
                             </div>
-                            <div className="rating">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
+                          
                         </div>
 
                     );

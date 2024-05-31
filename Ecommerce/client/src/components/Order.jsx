@@ -2,7 +2,9 @@ import React from "react";
 import './Order.css';
 import image from '../images/printer.jpeg';
 import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 const Order = () =>{
+    toast.success("Order placed.")
     return(
         <>
             <div className="lead">

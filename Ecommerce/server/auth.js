@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const jwt = require('jsonwebtoken');
-
+const nodemailer = require('nodemailer');
 
 const router = express.Router();
 const User = require('./model/userSchema');
@@ -57,9 +57,11 @@ router.post('/signing_in', async (req, res) => {
         }
         else {
             if (userLogin.password === password) {
-                token = jwt.sign({ id: userLogin._id }, process.env.SECRET_KEY, { expiresIn: '2h' });
+                token = jwt.sign({ id: userLogin._id }, process.env.SECRET_KEY, { expiresIn: '6h' });
                 console.log(token);
-                return res.status(200).json({ message: "user login successfully", token })
+                const expiresIn = 6 * 60 * 60*1000;
+
+                return res.status(200).json({ message: "user login successfully", token,expiresIn });
             }
             else {
                 return res.status(401).json({ message: "Incorrect Password" });
@@ -144,14 +146,127 @@ router.post('/buynow', authenticate, async (req, res) => {
 
 // admin page  
 
-router.get('/admin',async(req,res)=>{
-    const aggregatedData = await fetchData();
-    const data = await User.countDocuments();
-    const orders = await Admin.countDocuments();
-    
-    
-    res.json({data,orders,list: aggregatedData});
+router.get('/admin',  async (req, res) => {
+    try {
+              
+        const aggregatedData = await fetchData();
+        const userCount = await User.countDocuments();
+        const orderCount = await Admin.countDocuments();
+        
+        res.status(200).json({
+            data: userCount,
+            orders: orderCount,
+            list: aggregatedData
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: err.message });
+    }
 });
+
+// admin check
+
+router.post('/admincheck',authenticate,async(req,res)=>{
+        try{
+                const verifiedUser = await User.findOne({ _id: req.body.userId });
+                console.log(verifiedUser);
+            if (!verifiedUser || !verifiedUser.isAdmin) {
+                return res.status(403).json({ message: "You are not logged in as an admin." });
+            }  
+            else{
+                res.status(200).json({message:"OK"});
+            }
+        }
+        catch(err){
+            console.log(err);
+         res.status(500).json({ message: err.message });
+        }
+});
+
+
+// delivered order
+
+router.post('/delivered',async(req,res)=>{
+    try {
+        const response = await Admin.findOneAndDelete({ _id: req.body.id });
+        if (!response) {
+            return res.status(404).send({ message: "Order not found" });
+        }
+        res.send({ message: "Order delivered and removed", data: response });
+    } catch (err) {
+        console.log(err);
+        res.status(500).send({ message: "Server error" });
+    }
+}
+);
+
+// send email
+
+router.post('/sendemail',async(req,res)=>{
+    try{
+             const name =  await User.findById(req.body.userId);
+             if(!name){
+                    console.log("customer not found !");
+             }
+             else{
+
+          
+const currentDate = new Date();
+
+
+const day = currentDate.getDate();
+const month = currentDate.getMonth() + 1; 
+const year = currentDate.getFullYear();
+
+// Format the date as needed
+const formattedDate = `${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month : month}${year}`;
+
+
+
+                let transpoter = nodemailer.createTransport({
+                    service:'Gmail',
+                    auth:{
+                        user:'cartify94@gmail.com',
+                        pass:'bfhu wlxd essg psxe'
+                        
+                    }
+                });
+
+                let info = await transpoter.sendMail({
+                    from:'cartify94@gmail.com',
+                    to:name.email,
+                    subject:'Your order has been shipped.',
+                    text:`Dear ${name.name},
+
+                    We're excited to let you know that your order has been shipped and is on its way to you!
+                    
+                    Order Details:
+                    
+                    Order Number: ${name.id}
+                    Shipping Date: ${formattedDate}
+                    Estimated Delivery Date: within 2-3 business days.
+                    
+                    Thank you for shopping with us. We hope you enjoy your purchase!
+                    
+                    If you have any questions or need further assistance, feel free to contact our customer support.
+                    
+                    Best regards,
+                    
+                    The Cartify Team`,
+                    
+                });
+                console.log('Email sent.');
+                res.status(200).send({message:"Email sent."});
+                
+            }
+            }
+    catch(err){
+        console.log(err);
+        res.send({message:err});
+    }
+
+})
+
 
 
 

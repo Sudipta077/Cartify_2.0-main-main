@@ -4,6 +4,7 @@ const User = require("../model/userSchema"); // Assuming the user schema is in t
 const authenticate = async (req, res, next) => {
     try {
         // const token = req.Headers["Authorization"];
+        
         const jwToken=req.headers['authorization'].split(" ")[1]
         if (!jwToken) {
             return res.status(401).send({ message: "Authentication failed. Token not found." });

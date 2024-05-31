@@ -3,6 +3,8 @@ import logo from '../images/logo.png';
 import { NavLink,useNavigate } from "react-router-dom";
 import './Navbar.css';
 import { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 const Navbar=()=>{
   const[search, setSearch] = useState("");
   const onChange=(e)=>{
@@ -14,7 +16,7 @@ const Navbar=()=>{
   }
   const onSignUp=()=>{
     if(localStorage.getItem('jwtecomm')){
-      window.alert("You need to log out first !");
+      toast.warn("You need to log out first !");
    }else{
     navigate('/users/sign_up');
    }
@@ -22,7 +24,7 @@ const Navbar=()=>{
   }
   const onLogin=()=>{
     if(localStorage.getItem('jwtecomm')){
-       window.alert("You are already logged in !");
+       toast.warn("You are already logged in !");
     }else{
       navigate('/users/sign_in');
     }
@@ -31,13 +33,42 @@ const Navbar=()=>{
   const onLogout=()=>{
     if(localStorage.getItem('jwtecomm')){
        localStorage.removeItem('jwtecomm');
-       window.alert("You have been logged out successfully.")
+       localStorage.removeItem('tokenExpiration');
+       toast.success("You have been logged out successfully.")
        navigate('/');
     }else{
-      window.alert("You are not logged in !")
+      toast.info("You are not logged in !")
       navigate('/users/sign_in');
     }
   }
+
+  const onAdmin=async()=>{
+    try{
+      const token = localStorage.getItem('jwtecomm');
+      if(!token){
+        toast.error("You are not logged in ");
+      }
+     
+      const res = await axios.post('/admincheck',{},{
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+      }
+      });
+      if(res.status===200){
+        navigate('/admin');
+      }
+    
+  }
+  catch(err){
+    if (err.response && err.response.data && err.response.data.message) {
+      toast.info(err.response.data.message); 
+  } else {
+      toast.error("An error occurred. Please try again.");
+      console.log(err);
+  }
+  }
+}
 
   const onProfile=()=>{
     navigate('/profile');
@@ -55,8 +86,8 @@ const Navbar=()=>{
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink className="nav-link skin" to='/admin'>Become a seller</NavLink>
+            <li className="nav-item admin-heading" onClick={(e)=>{onAdmin()}}>
+                Become a seller
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle skin" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

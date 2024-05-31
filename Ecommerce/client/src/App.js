@@ -20,10 +20,12 @@ import Admin from './components/Admin.jsx';
 import Chatbot from './components/Chatbot.jsx';
 import Buynow from './components/Buynow.jsx';
 import Addproduct from './components/Addproduct.jsx';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <UserContextProvider>
-
+      <ToastContainer/>
     <Routes>
       <Route path='/' element={<Home/>}></Route>
       <Route path='/navbar' element={<Navbar/>}></Route>
@@ -43,6 +45,7 @@ function App() {
       <Route path='/chatbot' element={<Chatbot/>}/> 
       <Route path='/buynow' element={<Buynow/>}/>  
       <Route path='/addproduct' element={<Addproduct/>}/>  
+
      
       <Route path='*' element={<Error />} />
     </Routes>

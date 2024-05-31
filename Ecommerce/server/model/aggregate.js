@@ -21,6 +21,7 @@ async function fetchData() {
              {
                 $project: {
                     _id: 1,
+                    userId:1,
                     name: 1,
                     address: 1,
                     contact: 1,

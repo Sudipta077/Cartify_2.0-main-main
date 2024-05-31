@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const AddProduct = () => {
     const [title, setTitle] = useState("");
@@ -49,7 +50,7 @@ const AddProduct = () => {
                 <div className="mb-3">
                     <label htmlFor="image" className="form-label">Image</label>
                     <input
-                        type="url"
+                        type="file"
                         className="form-control"
                         id="image"
                         value={image}
@@ -66,7 +67,17 @@ const AddProduct = () => {
                         onChange={(e) => setCategory(e.target.value)}
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <div className="mb-3">
+                    <label htmlFor="category" className="form-label">Rating</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="category"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                    />
+                </div>
+                  <NavLink to='/'> <button type="submit" className="btn btn-primary">Submit</button></NavLink>
             </form>
         </div>
     );

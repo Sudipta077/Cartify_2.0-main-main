@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import img from '../images/logo.png';
+
 import { NavLink } from "react-router-dom";
 import sale from '../images/sale.jpeg';
 import men from '../images/men.png';
@@ -7,15 +7,9 @@ import makeup from '../images/jewellery.png';
 import bag from '../images/bag.png';
 import tv from '../images/tv.jpeg';
 import harddisk from "../images/harddisk.png";
-import dress1 from '../images/dress1.jpeg';
-import dress2 from '../images/dress2.jpeg';
-import dress3 from '../images/dress3.jpeg';
-import dress4 from '../images/dress4.jpeg';
+
 import machine from '../images/washing machine.jpeg';
-import pendrive from '../images/pendrive.jpeg';
-import powerbank from '../images/powerbank.jpeg';
-import printer from '../images/printer.jpeg';
-import camera from '../images/camera.jpeg';
+
 import sofa from '../images/sofa.jpeg';
 import women from '../images/women.png';
 import banner1 from '../images/banner1.png';
@@ -25,26 +19,43 @@ import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import Chatbot from "./Chatbot";
 import axios from "axios";
-// import { useState } from "react";
+
 
 
 const Home = () => {
 
     const navigate = useNavigate();
     const [state, setState] = useState([]);
+
+    const CheckTokenExpiration=()=>{
+    
+        const tokenExpiration = localStorage.getItem('tokenExpiration');
+        if (tokenExpiration) {
+            const currentTime = new Date().getTime();
+            if (currentTime > tokenExpiration) {
+                localStorage.removeItem('jwtecomm');
+                localStorage.removeItem('tokenExpiration');
+            }
+        }
+    }
+    CheckTokenExpiration();
+
+
+
     useEffect(()=>async () => {
         const response = await axios.get("https://fakestoreapi.com/products")
         console.log(response)
         setState(response.data);
-    })
+        
+    },[]);
 
     const productShow=(e,title)=>{
         const name = title;
         navigate('/popo',{state:{id:name}})
     }
 
-    const onSearch = (e) => {
-        let name = e.target.id;
+    const onSearch = (e,title) => {
+        let name = title;
 
         navigate('/list', { state: { id: name } });
     }
@@ -74,47 +85,47 @@ const Home = () => {
                         <p className="card-text text-center" >Top Sales</p>
                     </div>
                 </div>
-                <div className="card m-3 col-lg-1" >
+                <div className="card m-3 col-lg-1" onClick={(e) => { onSearch(e,"Backpack") }} >
                     <img src={bag} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e) => { onSearch(e) }} id="Backpack">Bags</p>
+                        <p className="card-text text-center" >Bags</p>
                     </div>
                 </div>
-                <div className="card m-3 col-lg-1" >
+                <div className="card m-3 col-lg-1" onClick={(e) => { onSearch(e,"jewelery") }} >
                     <img src={makeup} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e) => { onSearch(e) }} id="jewelery">Jewellery</p>
+                        <p className="card-text text-center" >Jewellery</p>
                     </div>
                 </div>
-                <div className="card m-3 col-lg-1">
+                <div className="card m-3 col-lg-1" onClick={(e) => { onSearch(e,"Hard Drive") }}>
                     <img src={harddisk} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e) => { onSearch(e) }} id="Hard Drive">Hard Disk</p>
+                        <p className="card-text text-center">Hard Disk</p>
                     </div>
                 </div>
-                <div className="card m-3 col-lg-1">
+                <div className="card m-3 col-lg-1" onClick={(e) => { onSearch(e,"inches") }}>
                     <img src={tv} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e) => { onSearch(e) }} id="inches">Television</p>
+                        <p className="card-text text-center" >Television</p>
                     </div>
                 </div>
 
-                <div className="card m-3 col-lg-1">
+                <div className="card m-3 col-lg-1" onClick={(e) => { onSearch(e,"Mens") }}>
                     <img src={men} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e) => { onSearch(e) }} id="Mens">Men</p>
+                        <p className="card-text text-center">Men</p>
                     </div>
                 </div>
-                <div className="card m-3 col-lg-1">
+                <div className="card m-3 col-lg-1" onClick={(e) => { onSearch(e,"women") }}>
                     <img src={women} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e) => { onSearch(e) }} id="women" >Women</p>
+                        <p className="card-text text-center">Women</p>
                     </div>
                 </div>
-                <div className="card m-3 col-lg-1">
+                <div className="card m-3 col-lg-1" onClick={(e) => { onSearchError(e) }}>
                     <img src={sofa} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <p className="card-text text-center" onClick={(e) => { onSearchError(e) }} >Furniture</p>
+                        <p className="card-text text-center">Furniture</p>
                     </div>
                 </div>
                 <div className="card m-3 col-lg-1">
@@ -153,7 +164,7 @@ const Home = () => {
             </div>
 
             <div className="container-fluid extra1 electronics my-5">
-                <h1 onClick={(e) => { onSearch(e) }} id="electronics">Best of electronics</h1>
+                <h1 onClick={(e) => { onSearch(e,"electronics") }}>Best of electronics</h1>
 
                 <div className="card-container flex-wrap container-fluid d-flex justify-content-between mx-1">
                 {
@@ -166,10 +177,10 @@ const Home = () => {
                     }).slice(1,5).map((ele) => {
                         return (
                             <>
-                                    <div className="product-card col-lg-3 col-sm-4" >
+                                    <div className="product-card col-lg-3 col-sm-4"  onClick={(e)=>{productShow(e,ele.title)}} >
                                         <img src={ele.image} className="card-img-top" alt="..." />
                                         <div className="card-body text-center">
-                                            <h5 className="card-title"  onClick={(e)=>{productShow(e,ele.title)}}>{ele.title.substring(0,13)}...</h5>
+                                            <h5 className="card-title" >{ele.title.substring(0,13)}...</h5>
                                         </div>
                                     </div>
                                     
@@ -182,7 +193,7 @@ const Home = () => {
             </div>
 
             <div className="container-fluid clothing extra1 my-3">
-                <h1 onClick={(e) => onSearch(e)} id="clothing"  >Best of clothing</h1>
+                <h1 onClick={(e) => onSearch(e,"clothing")}>Best of clothing</h1>
                 <div className="card-container  flex-wrap container-fluid d-flex justify-content-between mx-1">
                     
                     {
@@ -228,21 +239,21 @@ const Home = () => {
                     <div className="about-foot container col-lg-2">
                         <h5 className="text-center">HELP</h5>
                         <ul type="none">
-                            <li>Contact Us</li>
-                            <li>About Us</li>
-                            <li>Careers</li>
-                            <li>Cartify Stories</li>
-                            <li>Corporate Information</li>
+                            <li>Payments</li>
+                            <li>Shipping</li>
+                            <li>Cancellation & Returns</li>
+                            <li>FAQ</li>
+                            <li>Report Infringement</li>
                         </ul>
                     </div>
                     <div className="about-foot container col-lg-2">
                         <h5 className="text-center">SOCIAL</h5>
                         <ul type="none">
-                            <li>Contact Us</li>
-                            <li>About Us</li>
-                            <li>Careers</li>
-                            <li>Cartify Stories</li>
-                            <li>Corporate Information</li>
+                            <li>Facebook</li>
+                            <li>Instagram</li>
+                            <li>Telegram</li>
+                            <li>X</li>
+                            
                         </ul>
                     </div>
                 </div>

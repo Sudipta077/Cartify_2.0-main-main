@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import './Index.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +20,8 @@ const Index = ({ isSignInPage = true }) => {
             [name]: value
         });
     };
-   
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         
@@ -35,7 +36,9 @@ const Index = ({ isSignInPage = true }) => {
                 const data = response.data;
                 if (response.status === 200) {
                     if (isSignInPage) {
+                        const expirationTime = new Date().getTime() + data.expiresIn;
                         localStorage.setItem('jwtecomm', data.token);
+                        localStorage.setItem('tokenExpiration', expirationTime);
                         console.log('User logged in successfully');
                         window.alert("Logged in successfully");
                         navigate("/");

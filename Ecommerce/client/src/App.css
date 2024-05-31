@@ -32,10 +32,7 @@ body{
     cursor: pointer;
     transition: .5s; 
 }
-.card:hover{
-    width: 10vw; 
-  
-}
+
 .product-card img{
     height: 36vh;
     width: 35vh;
@@ -47,6 +44,11 @@ body{
 .product-card{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; 
 }
+.product-card:hover{
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
 
 .extra1 .card{
     border-color: rgb(238, 197, 197);
@@ -54,10 +56,15 @@ body{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; 
     
 }
+.extra1 h1{
+    font-family: 'Poppins', sans-serif;
+}
 
 .electronics h1:hover{
     color: #3b984b;
     cursor: pointer;
+    
+
 }
 .clothing h1:hover{
     color: #3b984b;

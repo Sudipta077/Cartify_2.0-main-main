@@ -3,7 +3,7 @@ import './Buynow.css';
 import { useNavigate } from "react-router-dom";
 import qr from "../images/qrcode.jpg";
 import axios from "axios";
-
+import { toast } from "react-toastify";
 const Buynow = () => {
     const navigate = useNavigate();
     const [values,setValues] = useState("")
@@ -35,7 +35,7 @@ const Buynow = () => {
                 }
             });
             if(response.status===200){
-                window.alert("Order placed");
+                toast.success("Order placed");
                 localStorage.removeItem('cartList');
                 navigate('/order');
             }
@@ -44,11 +44,11 @@ const Buynow = () => {
         if (err.response) {
             // The request was made and the server responded with a status code
             // that falls out of the range of 2xx
-            window.alert(err.response.data.message || "Server Error Occurred !");
+            toast.error(err.response.data.message || "Server Error Occurred !");
             console.log(err.response.data.message || err.response.data);
         } else if (err.request) {
             // The request was made but no response was received
-            window.alert("No response received from the server");
+            toast.error("No response received from the server");
             console.log(err.request);
         } else {
             // Something happened in setting up the request that triggered an Error
