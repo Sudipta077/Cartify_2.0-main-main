@@ -1,5 +1,0 @@
-pass sudiptaecom 
-user name paulsudipta929
-link - mongodb+srv://paulsudipta929:sudiptaecom@cluster0.n2djuvy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-
-Cartify_2.0\Ecommerce\server
