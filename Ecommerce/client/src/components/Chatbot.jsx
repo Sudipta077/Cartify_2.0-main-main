@@ -7,12 +7,12 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
 
   const predefinedResponses = {
-    "What is the return policy?": "Our return policy allows returns within 30 days of purchase.",
-    "How can I track my order?": "You can track your order using the tracking number provided in your confirmation email.",
-    "What payment methods do you accept?": "We accept all UPI payment methods.",
-    "Do you offer international shipping?": "Yes, we ship to most countries worldwide.",
-    "What should I do if I receive a damaged item?": "Please contact our customer service within 48 hours of receiving the item.",
-    "What are your customer service hours?": "Our customer service is available Monday to Friday, 9 AM to 6 PM."
+    "what is the return policy?": "Our return policy allows returns within 30 days of purchase.",
+    "how can I track my order?": "You can track your order using the tracking number provided in your confirmation email.",
+    "what payment methods do you accept?": "We accept all UPI payment methods.",
+    "do you offer international shipping?": "Yes, we ship to most countries worldwide.",
+    "what should I do if I receive a damaged item?": "Please contact our customer service within 48 hours of receiving the item.",
+    "what are your customer service hours?": "Our customer service is available Monday to Friday, 9 AM to 6 PM."
   };
 
   const handleToggle = () => {

@@ -8,7 +8,7 @@ import Logout from '../images/logout.png';
 import Button from '@mui/material/Button';
 import Customer from '../images/service.png';
 import Order from '../images/order.png';
-import Alert from '@mui/material/Alert';
+import { toast } from "react-toastify";
 import { NavLink, useNavigate } from "react-router-dom";
 const Admin = () => {
     const navigate = useNavigate();
@@ -32,15 +32,15 @@ const Admin = () => {
         if (buttonId === "shipped") {
             setDisableShipped(prevState => ({ ...prevState, [id]: true }));
             try {
-                console.log(id);
+                
                 const res = await axios.post('/sendemail', { userId: id });
                 if (res.status === 200) {
                     // (res.data.message);
-                    <Alert severity="success">{res.data.message}</Alert>
+                    toast.success(res.data.message);
                 }
             } catch (err) {
                 if (err.response) {
-                    window.alert(err.response.data.message || "Incorrect credentials");
+                    toast.error(err.response.data.message || "Incorrect credentials");
                 }
                 setDisableShipped(prevState => ({ ...prevState, [id]: false }));
             }
@@ -138,7 +138,7 @@ const Admin = () => {
                                         variant="contained"
                                         className="text-center"
                                         id="shipped"
-                                        onClick={(e) => handleClick(e, row._id)}
+                                        onClick={(e) => handleClick(e, row.userId)}
                                         disabled={disableShipped[row._id] || false}
                                     >
                                         Shipped

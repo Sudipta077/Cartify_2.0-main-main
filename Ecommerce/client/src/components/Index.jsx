@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import './Index.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 const Index = ({ isSignInPage = true }) => {
     const navigate = useNavigate();
     const [values, setValues] = useState({
@@ -40,10 +41,10 @@ const Index = ({ isSignInPage = true }) => {
                         localStorage.setItem('jwtecomm', data.token);
                         localStorage.setItem('tokenExpiration', expirationTime);
                         console.log('User logged in successfully');
-                        window.alert("Logged in successfully");
+                        toast.success("Logged in successfully");
                         navigate("/");
                     } else {
-                        alert("Successful registration");
+                        toast.success("Successful registration");
                         navigate("/users/sign_in");
                     }
                 }
@@ -51,15 +52,15 @@ const Index = ({ isSignInPage = true }) => {
                 if (error.response) {
                     // The request was made and the server responded with a status code
                     // that falls out of the range of 2xx
-                    window.alert(error.response.data.message || "Incorrect credentials");
+                        toast.error(error.response.data.message || "Incorrect credentials");
                     console.log(error.response.data.error || error.response.data);
                 } else if (error.request) {
                     // The request was made but no response was received
-                    window.alert("No response received from the server");
+                    toast.error("No response received from the server");
                     console.log(error.request);
                 } else {
                     // Something happened in setting up the request that triggered an Error
-                    window.alert("Error in setting up the request");
+                    toast.error("Error in setting up the request");
                     console.log('Error', error.message);
                 }
             }

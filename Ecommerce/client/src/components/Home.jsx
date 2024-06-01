@@ -206,7 +206,7 @@ const Home = () => {
                         }).slice(1,5).map((ele)=>{
                             return(
                                 <>
-                                    <div className="product-card col-lg-3 col-sm-4" >
+                                    <div className="product-card col-lg-3 col-sm-4"  onClick={(e)=>{productShow(e,ele.title)}} >
                                         <img src={ele.image} className="card-img-top" alt="..." />
                                         <div className="card-body text-center">
                                             <h5 className="card-title">{ele.title.substring(0,13)}...</h5>
@@ -270,4 +270,4 @@ const Home = () => {
         </>
     );
 }
-export default Home;
+export default Home

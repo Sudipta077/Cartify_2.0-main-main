@@ -204,6 +204,7 @@ router.post('/delivered',async(req,res)=>{
 
 router.post('/sendemail',async(req,res)=>{
     try{
+            
              const name =  await User.findById(req.body.userId);
              if(!name){
                     console.log("customer not found !");
@@ -219,7 +220,7 @@ const month = currentDate.getMonth() + 1;
 const year = currentDate.getFullYear();
 
 // Format the date as needed
-const formattedDate = `${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month : month}${year}`;
+const formattedDate = `${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month : month}-${year}`;
 
 
 
@@ -227,7 +228,7 @@ const formattedDate = `${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month 
                     service:'Gmail',
                     auth:{
                         user:'cartify94@gmail.com',
-                        pass:'bfhu wlxd essg psxe'
+                        pass:process.env.GPASS
                         
                     }
                 });
