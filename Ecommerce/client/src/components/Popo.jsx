@@ -5,7 +5,7 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import Chatbot from './Chatbot';
-
+import { toast } from 'react-toastify';
 const Popo = () => {
     const navigate = useNavigate();
     const [state, setState] = useState([]);
@@ -55,7 +55,7 @@ const Popo = () => {
 
             }
             else {
-                window.alert('You need to log in !')
+                toast.warn('You need to log in !')
                 navigate('/users/sign_in');
             }
         }

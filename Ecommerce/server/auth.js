@@ -227,33 +227,30 @@ const formattedDate = `${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month 
                 let transpoter = nodemailer.createTransport({
                     service:'Gmail',
                     auth:{
-                        user:'cartify94@gmail.com',
+                        user:'cartify777@gmail.com',
                         pass:process.env.GPASS
                         
                     }
                 });
 
                 let info = await transpoter.sendMail({
-                    from:'cartify94@gmail.com',
+                    from:'cartify777@gmail.com',
                     to:name.email,
                     subject:'Your order has been shipped.',
-                    text:`Dear ${name.name},
-
-                    We're excited to let you know that your order has been shipped and is on its way to you!
-                    
-                    Order Details:
-                    
-                    Order Number: ${name.id}
-                    Shipping Date: ${formattedDate}
-                    Estimated Delivery Date: within 2-3 business days.
-                    
-                    Thank you for shopping with us. We hope you enjoy your purchase!
-                    
-                    If you have any questions or need further assistance, feel free to contact our customer support.
-                    
-                    Best regards,
-                    
-                    The Cartify Team`,
+                    html: `
+                    <p>Dear ${name.name},</p>
+                    <p>We're excited to let you know that your order has been shipped and is on its way to you!</p>
+                    <p>Order Details:</p>
+                    <ul>
+                        <li>Order Number: ${name.id}</li>
+                        <li>Shipping Date: ${formattedDate}</li>
+                        <li>Estimated Delivery Date: within 2-3 business days.</li>
+                    </ul>
+                    <p>Thank you for shopping with us. We hope you enjoy your purchase!</p>
+                    <p>If you have any questions or need further assistance, feel free to contact our customer support.</p>
+                    <p>Best regards,</p>
+                    <p>The Cartify Team</p>
+                `,
                     
                 });
                 console.log('Email sent.');
